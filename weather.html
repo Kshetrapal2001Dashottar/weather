@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="weather.css">
+    <title>Weather APP</title>
+</head>
+
+<body>
+    <section>
+        <div class="container input">
+            <a class="link" href="../QR_generator/qr.html">Click here for QR</a>
+            <h1>Weather App</h1>
+            <input id="input" type="text" placeholder="Enter place">
+            <button onclick="giveCity()" style=" cursor: pointer; padding: 10px 38px;">Search</button>
+        </div>
+
+        <div class="container temperature">
+            <h2>Get Today's Temperature</h2>
+        </div>
+    </section>
+
+    <script>
+        // async function giveCity() {
+
+        //     let inputCity = document.getElementById('input').value.trim();
+
+        //     if (!inputCity) {
+        //         alert("Enter Something")
+        //         return;
+        //     }
+
+        //     let weatherC = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=metric&appid=9a5a6e5d0fa0be098e2f9b7e73a07a9b`)
+        //         .then((e) => {
+        //             return e.json();
+        //         })
+
+        //     if (!weatherC.message) {
+
+        //         document.querySelector(".temperature").innerHTML = `<h1>${inputCity.toUpperCase()}</h1>
+        //             <div class="clouds">
+        //                 <div class="cloud-image">
+        //                     <img class="cloudImg" src="images/Clouds.svg" alt="">
+        //                     <h2>${weatherC.weather[0].main}</h2>
+        //                 </div>
+        //                 <label for="">${weatherC.main.temp} °C </label>
+        //                 <div class="">
+        //                     <p>Wind: ${weatherC.wind.speed}</p>
+        //                     <p>Pressure: ${weatherC.main.pressure} mb</p>
+        //                     <p>Humidity: ${weatherC.main.humidity}</p>
+        //                 </div>
+        //             </div>
+        //             </div>`
+        //         console.log(weatherC)
+
+        //     }
+        //     else {
+        //         console.log(weatherC.message)
+        //         alert(weatherC.message);
+        //     }
+
+
+        // }
+        async function giveCity() {
+            const inputCity = document.getElementById('input').value.trim();
+
+            if (!inputCity) {
+                alert("Enter Something");
+                return;
+            }
+
+
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=metric&appid=9a5a6e5d0fa0be098e2f9b7e73a07a9b`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const weatherC = await response.json();
+                console.log(weatherC)
+                document.querySelector(".temperature").innerHTML = `
+                  <h1>${weatherC.name.toUpperCase()}</h1>
+                  <div class="clouds">
+                    <div class="cloud-image">
+                      <img class="cloudImg" src="images/Clouds.svg" alt="">
+                      <h2>${weatherC.weather[0].main}</h2>
+                    </div>
+                    <label for="">${weatherC.main.temp} °C </label>
+                    <div class="">
+                      <p>Wind: ${weatherC.wind.speed}</p>
+                      <p>Pressure: ${weatherC.main.pressure} mb</p>
+                      <p>Humidity: ${weatherC.main.humidity}</p>
+                    </div>
+                  </div>
+                `;
+                console.log(weatherC);
+            }
+            catch (error) {
+                console.log(error);
+                // alert(weatherC.message);
+                alert("City Not Found")
+            }
+        }
+    </script>
+</body>
+
+</html>

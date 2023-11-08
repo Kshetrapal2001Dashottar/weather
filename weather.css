@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+section {
+    background: url("images/mountains.svg") no-repeat;
+    height: 100vh;
+    background-size: cover;
+    background-color: #1F4E69;
+}
+
+.container {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+.input {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.input input {
+    border-radius: 25px;
+    width: 300px;
+    padding: 10px 0;
+    padding-left: 5px;
+    outline: none;
+    border: none;
+}
+
+.input button {
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 100px;
+    padding-left: 5px;
+    outline: none;
+    border: none;
+}
+
+.temperature {
+    background-color: #042436;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+.clouds {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.cloud-image img {
+    width: 150px;
+    height: 150px;
+}
+
+.weeks {
+    display: flex;
+    justify-content: space-around
+}
+
+label {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
